@@ -466,7 +466,37 @@ src="https://www.facebook.com/tr?id=1511035433923735&ev=PageView&noscript=1"
         </div>
     </section>
 
+    <script>
+    const form = document.querySelector('form');
+    const telInput = document.querySelector('input[name="telefone"]');
+
+    // Impede que o usuário digite qualquer coisa que não seja número no telefone
+    telInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+    });
+
+    // Validação extra ao clicar no botão
+    form.addEventListener('submit', function(event) {
+        const email = document.querySelector('input[name="email"]').value;
+        const nome = document.querySelector('input[name="nome"]').value;
+
+        // Verifica se os campos estão vazios ou se o e-mail é inválido
+        if (!nome || !email || telInput.value.length < 10) {
+            alert("Por favor, preencha todos os campos corretamente. O telefone deve ter DDD + Número.");
+            event.preventDefault(); // Impede o envio
+            return;
+        }
+
+        // Validação simples de e-mail real (procura por @ e .)
+        if (!email.includes('@') || !email.includes('.')) {
+            alert("Por favor, insira um e-mail válido.");
+            event.preventDefault();
+        }
+    });
+</script>
+
 </body>
 
 </html>
+
 
