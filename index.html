@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chatbot Especialista - Seu Marketing Pronto</title>
+  <title>Seu Marketing Pronto em Minutos</title>
 
-  <!-- Favicon (usa sua própria imagem se quiser) -->
   <link rel="icon" href="chave logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +49,7 @@
       overflow-x:hidden;
     }
 
-    /* reading bar */
+    /* Barra de leitura */
     .readbar{
       position:fixed; top:0; left:0; height:3px; width:0%;
       background: linear-gradient(90deg, var(--gold2), var(--gold));
@@ -58,7 +57,7 @@
       box-shadow: 0 8px 18px rgba(216,180,90,.18);
     }
 
-    /* background orbs */
+    /* Orbs */
     .orbs{
       position:fixed; inset:0; pointer-events:none; z-index:-1;
       filter: blur(32px);
@@ -139,7 +138,7 @@
       .lead{ font-size: 1.18rem; }
     }
 
-    /* TOPBAR - LOGO CENTRALIZADA */
+    /* TOPBAR - LOGO CENTRAL */
     .topbar{
       position:sticky; top:0;
       z-index: 1200;
@@ -151,22 +150,20 @@
       width:92%;
       max-width: var(--max);
       margin:0 auto;
-      padding: 12px 0;     /* altura normal */
+      padding: 12px 0;
       display:flex;
       align-items:center;
-      justify-content:center; /* centraliza no meio */
+      justify-content:center;
     }
     .logo-img-center{
-      height: 44px;        /* tamanho normal no mobile */
+      height: 44px;
       width:auto;
       display:block;
       object-fit:contain;
       filter: drop-shadow(0 8px 16px rgba(0,0,0,.45));
     }
     @media (min-width:768px){
-      .logo-img-center{
-        height: 54px;      /* um pouco maior no desktop */
-      }
+      .logo-img-center{ height: 54px; }
     }
 
     .section-dark{
@@ -177,6 +174,7 @@
       border-top: 1px solid rgba(255,255,255,.05);
       border-bottom: 1px solid rgba(255,255,255,.05);
     }
+
     .divider{
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(216,180,90,.55), transparent);
@@ -386,39 +384,6 @@
     .stars{ color:#f1c40f; font-size: 1rem; margin-bottom: 10px; display:block; }
     .review p{ margin:0; color:#d7d7d7; font-size:.95rem; font-style: italic; }
 
-    .compare{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      margin-top: 24px;
-      text-align:left;
-    }
-    @media(min-width:768px){
-      .compare{ grid-template-columns: 1fr 1fr; }
-    }
-    .before{
-      background: rgba(192,57,43,.10);
-      border: 1px solid rgba(192,57,43,.75);
-      border-radius: var(--radius);
-      padding: 22px;
-      will-change: transform;
-    }
-    .after{
-      background: rgba(39,174,96,.10);
-      border: 1px solid rgba(39,174,96,.75);
-      border-radius: var(--radius);
-      padding: 22px;
-      will-change: transform;
-    }
-    .coltitle{
-      font-weight: 950;
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing: 1px;
-      display:block;
-      margin-bottom: 12px;
-    }
-
     details{
       background: rgba(255,255,255,.035);
       border: 1px solid rgba(255,255,255,.10);
@@ -451,26 +416,84 @@
     details[open] summary::after{ content:"–"; }
     details p{ padding: 0 18px 18px 18px; margin:0; color:#d2d2d2; }
 
-    .guarantee{
-      background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(0,0,0,.32));
-      border: 1px solid rgba(216,180,90,.55);
-      border-radius: 18px;
-      padding: 28px;
+    /* BALÕES FINAIS (GARANTIA + PREÇO) */
+    .balloons{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
       max-width: 760px;
-      margin: 34px auto 0;
-      box-shadow: var(--shadow);
+      margin: 18px auto 0;
+      text-align: left;
     }
-    .guarantee img{ width:74px; margin-bottom: 12px; }
+    @media (min-width: 768px){
+      .balloons{ grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    .balloon{
+      border-radius: 18px;
+      padding: 18px 18px;
+      border: 1px solid rgba(216,180,90,.42);
+      background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(0,0,0,.35));
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .balloon::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(320px 180px at 20% 20%, rgba(216,180,90,.16), transparent 60%);
+      pointer-events:none;
+      opacity: .95;
+    }
+    .balloon.ok{ border-color: rgba(39,174,96,.55); }
+    .balloon.ok::after{
+      background: radial-gradient(340px 190px at 20% 20%, rgba(39,174,96,.18), transparent 60%);
+    }
+    .balloon.price{ border-color: rgba(216,180,90,.55); }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-weight: 900;
+      color: #1a1204;
+      background: linear-gradient(180deg, var(--gold2), var(--gold));
+      border: 1px solid rgba(216,180,90,.55);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      position: relative;
+      z-index: 2;
+    }
+    .balloon h3{
+      margin: 12px 0 6px;
+      position: relative;
+      z-index: 2;
+    }
+    .balloon p{
+      margin: 0;
+      color: rgba(255,255,255,.86);
+      position: relative;
+      z-index: 2;
+    }
+    .price-strong{
+      font-size: 1.34rem;
+      font-weight: 950;
+      color: #fff;
+    }
+    .price-sub{
+      font-size: .92rem;
+      color: rgba(255,255,255,.72);
+      margin-top: 6px;
+    }
 
     .reveal{
       opacity: 0;
       transform: translateY(14px);
       transition: opacity .6s ease, transform .6s ease;
     }
-    .reveal.show{
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.show{ opacity: 1; transform: translateY(0); }
     .delay-1{ transition-delay: .06s; }
     .delay-2{ transition-delay: .12s; }
     .delay-3{ transition-delay: .18s; }
@@ -522,7 +545,7 @@
       src="https://www.facebook.com/tr?id=1511035433923735&ev=PageView&noscript=1"/>
   </noscript>
 
-  <!-- TOPBAR (logo centralizada) -->
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="inner">
       <img class="logo-img-center" src="chave logo.png" alt="Logo">
@@ -562,7 +585,7 @@
       </div>
 
       <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal show">
-        QUERO ATIVAR O CHATBOT AGORA
+        QUERO ATIVAR AGORA
         <span>(Oferta única: Acesso imediato)</span>
       </a>
       <p class="microcopy reveal show delay-1">🔒 Compra segura • ⚡ Acesso imediato • ✅ Garantia de 7 dias</p>
@@ -588,7 +611,7 @@
         <div class="card tilt" style="background: rgba(192,57,43,.12); border-color: rgba(192,57,43,.55);">❌ Perde tempo tentando "inventar prompt"</div>
         <div class="card tilt" style="background: rgba(192,57,43,.12); border-color: rgba(192,57,43,.55);">❌ Pede conteúdo e recebe texto robótico</div>
         <div class="card tilt" style="background: rgba(192,57,43,.12); border-color: rgba(192,57,43,.55);">❌ Posta muito mas não vende nada</div>
-        <div class="card tilt" style="background: rgba(39,174,96,.10); border-color: rgba(39,174,96,.45);">✅ Processo claro: objetivo → perguntas → entrega final pronta</div>
+        <div class="card tilt" style="background: rgba(216,180,90,.08); border-color: rgba(216,180,90,.35);">✅ Processo guiado: objetivo → perguntas → entrega final pronta</div>
       </div>
     </div>
   </section>
@@ -606,77 +629,19 @@
         </div>
         <div class="step">
           <strong>2. Responda rápido</strong>
-          <p style="margin:0; color:#cfcfcf;">O chatbot fará 2 ou 3 perguntas rápidas para entender seu produto.</p>
+          <p style="margin:0; color:#cfcfcf;">O assistente faz 2 ou 3 perguntas rápidas para entender seu produto.</p>
         </div>
-        <div class="step" style="border-left-color: rgba(39,174,96,.9);">
-          <strong style="color: var(--green);">3. Receba pronto</strong>
-          <p style="margin:0; color:#cfcfcf;">Ele entrega o material final já com estrutura de venda (copy persuasiva + CTA).</p>
+        <div class="step">
+          <strong>3. Receba pronto</strong>
+          <p style="margin:0; color:#cfcfcf;">Entrega final com estrutura de venda (copy persuasiva + CTA).</p>
         </div>
       </div>
 
       <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal delay-3" style="margin-top:22px;">
-        QUERO O BOT CRIANDO PRA MIM
+        QUERO O MARKETING PRONTO
         <span>(Liberado na hora)</span>
       </a>
       <p class="microcopy reveal delay-3">✅ Acesso imediato • ✅ Garantia 7 dias</p>
-    </div>
-  </section>
-
-  <!-- O QUE CRIA -->
-  <section class="section-dark center" id="o-que-cria">
-    <div class="container">
-      <h2 class="caps reveal">O que esse Chatbot cria por você:</h2>
-      <p class="muted reveal delay-1">Muito além de textinho básico. É uma máquina de conteúdo.</p>
-
-      <div class="grid-2 reveal delay-2">
-        <div class="card tilt"><h4>🎬 Reels Virais Prontos</h4><p>Roteiros com estrutura de retenção: “Você sabia?”, “Unpopular opinion”, “Speedrun”, “Expectativa vs Realidade”.</p></div>
-        <div class="card tilt"><h4>📱 Posts Profissionais</h4><p>Carrossel passo a passo, mito vs verdade, pergunta provocativa, estudo de caso e post de autoridade.</p></div>
-        <div class="card tilt"><h4>💰 Anúncios que Vendem</h4><p>Scripts para Meta/TikTok/Youtube. Modelos UGC, PAS e anúncios de quebra de objeção.</p></div>
-        <div class="card tilt"><h4>📧 E-mails Automáticos</h4><p>Sequências de boas-vindas, carrinho abandonado, recuperação de vendas e e-mails de antecipação.</p></div>
-        <div class="card tilt"><h4>📝 Copy de Vendas Completa</h4><p>Headline, mecanismo único, oferta, garantia e FAQ. Tudo para sua página de vendas converter.</p></div>
-        <div class="card tilt"><h4>🎥 VSLs Curtas (Vídeo de Vendas)</h4><p>Roteiros diretos (45s, 60s, 90s) com estrutura de “breaking news” ou desafio.</p></div>
-      </div>
-
-      <div class="panel tilt reveal delay-3" style="margin-top:18px; padding: 16px; border-style:dashed; border-color: rgba(216,180,90,.45);">
-        <p style="margin:0; font-size:.98rem;">
-          🛠️ <strong class="white">BÔNUS: PROMPT ENGINE</strong> — Se quiser criar os seus próprios comandos, o bot também te ensina engenharia de prompt.
-        </p>
-      </div>
-
-      <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal" style="margin-top:22px;">
-        QUERO MEU MARKETING PRONTO
-        <span>(Acesso imediato)</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- PROVAS -->
-  <section class="center" id="provas">
-    <div class="container">
-      <h2 class="caps white reveal">O que a galera sente na prática</h2>
-
-      <div class="reviews reveal delay-1">
-        <div class="review tilt">
-          <div class="reviewhead"><span class="reviewer">Lucas M.</span><span class="badge">✔ Verificado</span></div>
-          <span class="stars">⭐⭐⭐⭐⭐</span>
-          <p>"Eu postava quando dava. Agora eu posto todo dia. A consistência mudou meu jogo no Instagram."</p>
-        </div>
-        <div class="review tilt">
-          <div class="reviewhead"><span class="reviewer">Ana Paula S.</span><span class="badge">✔ Verificado</span></div>
-          <span class="stars">⭐⭐⭐⭐⭐</span>
-          <p>"Em 10 minutos eu tenho o conteúdo da semana. Parece que tenho um social media particular."</p>
-        </div>
-        <div class="review tilt">
-          <div class="reviewhead"><span class="reviewer">Roberto F.</span><span class="badge">✔ Verificado</span></div>
-          <span class="stars">⭐⭐⭐⭐⭐</span>
-          <p>"A copy do anúncio ficou pronta e eu só subi no Meta. O CTR aumentou e o custo caiu."</p>
-        </div>
-      </div>
-
-      <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal delay-2" style="margin-top:18px;">
-        QUERO RESULTADO COM O CHATBOT
-        <span>(Acesso imediato)</span>
-      </a>
     </div>
   </section>
 
@@ -685,41 +650,48 @@
     <div class="container">
       <h2 class="caps reveal">Perguntas Frequentes</h2>
       <div class="reveal delay-1" style="max-width: 760px; margin: 0 auto;">
-        <details class="tilt"><summary>Preciso saber marketing?</summary><p>Não. O chatbot já te guia e devolve pronto no formato certo. Ele faz o trabalho pesado de estratégia.</p></details>
-        <details class="tilt"><summary>Funciona pra qualquer nicho?</summary><p>Sim. Você só informa nicho + público + oferta e ele adapta a linguagem instantaneamente.</p></details>
-        <details class="tilt"><summary>Ele cria anúncios prontos mesmo?</summary><p>Sim: ele entrega a copy do anúncio, sugere o ângulo criativo, o roteiro do vídeo e o CTA.</p></details>
-        <details class="tilt"><summary>Preciso aparecer nos vídeos?</summary><p>Não. Ele te dá opções de roteiros tanto para quem aparece quanto para quem faz vídeos sem aparecer.</p></details>
-        <details class="tilt"><summary>Como recebo o acesso?</summary><p>Logo após a confirmação do pagamento, você recebe os dados de acesso no seu e-mail imediatamente.</p></details>
+        <details class="tilt"><summary>Preciso saber marketing?</summary><p>Não. Você recebe estrutura pronta e só ajusta detalhes do seu produto/nicho.</p></details>
+        <details class="tilt"><summary>Funciona pra qualquer nicho?</summary><p>Sim. Você informa nicho + público + oferta e o conteúdo adapta o tom automaticamente.</p></details>
+        <details class="tilt"><summary>Ele cria anúncios mesmo?</summary><p>Sim: copy, ângulos criativos e sugestões de roteiro para vídeo.</p></details>
+        <details class="tilt"><summary>Como recebo o acesso?</summary><p>Após confirmação do pagamento, o acesso chega no seu e-mail.</p></details>
         <details class="tilt"><summary>Qual é a garantia?</summary><p>Você tem 7 dias para testar. Se não fizer sentido, é só pedir reembolso dentro do prazo.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- GARANTIA -->
+  <!-- FINAL -->
   <section class="section-dark center">
     <div class="container">
-      <div class="guarantee tilt reveal">
-        <img src="garantia.png" alt="Selo Garantia 7 Dias">
-        <h2 class="gold caps" style="font-size: 1.45rem; margin-bottom: 12px;">Teste por 7 dias com Risco Zero</h2>
-        <p class="white" style="font-size: 1.05rem;">
-          Ative agora e teste o chatbot criando seus posts, reels e anúncios.
-          <br>
-          Se você achar que não valeu a pena, envie um e-mail e eu <strong>devolvo 100% do seu dinheiro</strong>.
-        </p>
-        <p style="margin-bottom:0; font-weight:900;" class="white">Sem perguntas. Sem letras miúdas.</p>
+      <h2 class="caps reveal">Última etapa</h2>
+      <p class="muted reveal delay-1" style="max-width: 780px; margin: 0 auto;">
+        Se você quer parar de travar e ter marketing pronto com consistência, ative agora.
+      </p>
+
+      <div class="balloons reveal delay-2">
+        <div class="balloon ok tilt">
+          <span class="tag">✅ Garantia</span>
+          <h3>7 dias para testar</h3>
+          <p>Se não fizer sentido pra você, é só pedir reembolso dentro do prazo.</p>
+        </div>
+
+        <div class="balloon price tilt">
+          <span class="tag">💳 Oferta</span>
+          <h3>6x de <span class="price-strong">R$ 8,99</span></h3>
+          <p class="price-sub">ou <strong>R$ 47,90</strong> à vista • acesso imediato</p>
+        </div>
       </div>
 
-      <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal" style="margin-top:22px;">
-        QUERO ACESSO IMEDIATO AO CHATBOT
+      <a href="https://pay.kiwify.com.br/825nOXj" class="btn-cta reveal delay-3" style="margin-top:22px;">
+        ATIVAR AGORA
         <span>(Liberado na hora)</span>
       </a>
-      <p class="microcopy">🔒 Pagamento seguro • ✅ Garantia 7 dias</p>
+      <p class="microcopy">🔒 Pagamento seguro • ✅ Garantia 7 dias • ⚡ Acesso imediato</p>
     </div>
   </section>
 
   <footer class="center">
     <div class="container" style="padding: 0;">
-      <p>Chatbot Marketing IA © 2025. Todos os direitos reservados.</p>
+      <p>© 2025. Todos os direitos reservados.</p>
       <p style="opacity: 0.75;">Políticas de Privacidade | Termos de Uso</p>
       <p style="margin-top: 10px; font-size: 0.72rem; opacity: 0.75;">
         Este site não é afiliado ao Facebook ou a qualquer entidade do Meta.
@@ -751,7 +723,7 @@
       window.addEventListener("resize", updateReadbar);
       updateReadbar();
 
-      // CTA glow (desktop + mobile)
+      // CTA glow
       function attachGlow(btn){
         if(!btn) return;
         const set = (clientX, clientY) => {
